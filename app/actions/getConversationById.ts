@@ -16,7 +16,7 @@ const getConversationById = async (conversationId: string) => {
         });
 
         return conversation;
-    }catch(error: any){
+    }catch(error: unknown){
         // console.log(error);
         return null;
     }
