@@ -19,7 +19,7 @@ const MobileItem: React.FC<MobileItemProps> = ({ href, icon: Icon, active, onCli
 
     return (
         <Link
-            onClick={onClick}
+            onClick={handleClick}
             href={href}
             className={clsx(`
         group
