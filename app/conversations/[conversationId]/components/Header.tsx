@@ -9,6 +9,7 @@ import useOtherUser from "@/app/hooks/useOtherUser";
 import Avatar from "@/app/components/Avatar";
 import ProfileDrawer from "./ProfileDrawer";
 import AvatarGroup from "@/app/components/AvatarGroup";
+import useActiveList from "@/app/hooks/useActiveList";
 
 interface HeaderProps {
     conversation: Conversation & {
@@ -20,17 +21,20 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
     const otherUser = useOtherUser(conversation);
     const [drawerOpen, setDrawerOpen] = useState(false);
 
+    const { members } = useActiveList();
+    const isActive = members.indexOf(otherUser?.email!) !== -1;
+
     const statusText = useMemo(() => {
         if (conversation.isGroup) {
             return `${conversation.users.length} members`;
         }
-        return 'Active'
-    }, [conversation])
+        return isActive ? 'Active' : 'Offline';
+    }, [conversation, isActive]);
 
 
     return (
         <>
-            <ProfileDrawer data={conversation} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)}/>
+            <ProfileDrawer data={conversation} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
             <div className="
             bg-white
             w-full
@@ -48,16 +52,16 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                     <Link
                         href={"/conversations"}
                         className="
-                    lg:hidden
-                    block
-                    text-sky-600
-                    transition
-                    cursor-pointer"
+                            lg:hidden
+                            block
+                            text-sky-600
+                            transition
+                            cursor-pointer"
                     >
                         <HiChevronLeft size={32} />
                     </Link>
                     {conversation.isGroup ? (
-                        <AvatarGroup users={conversation.users}/>
+                        <AvatarGroup users={conversation.users} />
                     ) : (
                         <Avatar user={otherUser} />
                     )}
@@ -78,11 +82,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                     size={32}
                     onClick={() => setDrawerOpen(true)}
                     className="
-                    text-sky-500
-                    cursor-pointer
-                    hover:text-sky-600
-                    transition
-                "
+                        text-sky-500
+                        cursor-pointer
+                        hover:text-sky-600
+                        transition
+                        "
                 />
             </div>
         </>
