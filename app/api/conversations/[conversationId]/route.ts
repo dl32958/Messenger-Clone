@@ -5,7 +5,8 @@ import { pusherServer } from '@/app/libs/pusher';
 
 
 interface IParams {
-    conversationId?: string;
+    // conversationId?: string;
+    conversationId?: string | undefined;
 }
 
 export async function DELETE(request: Request, context: { params: IParams }) {
