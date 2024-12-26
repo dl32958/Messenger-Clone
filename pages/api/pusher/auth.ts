@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import {getServerSession} from "next-auth";
+import { getServerSession } from "next-auth";
 
-import {pusherServer} from "@/app/libs/pusher";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import { pusherServer } from "@/app/libs/pusher";
+import { authOptions } from "@/app/libs/authOptions";
 
 export default async function hander(request: NextApiRequest, response: NextApiResponse) {
     const session = await getServerSession(request, response, authOptions);
@@ -19,6 +19,6 @@ export default async function hander(request: NextApiRequest, response: NextApiR
     };
 
     const authResponse = pusherServer.authorizeChannel(socketId, channel, data);
-    
+
     return response.send(authResponse);
 }
