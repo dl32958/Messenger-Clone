@@ -5,13 +5,12 @@ import { pusherServer } from '@/app/libs/pusher';
 
 
 interface IParams {
-    // conversationId?: string;
-    conversationId?: string | undefined;
+    conversationId?: string;
 }
 
-export async function DELETE(request: Request, context: { params: IParams }) {
+export async function DELETE(request: Request, { params }: { params: IParams }) {
     try {
-        const { conversationId } = context.params;
+        const { conversationId } = params;
         const currentUser = await getCurrentUser();
         if (!currentUser) {
             return new NextResponse('Unauthorized', { status: 401 });
