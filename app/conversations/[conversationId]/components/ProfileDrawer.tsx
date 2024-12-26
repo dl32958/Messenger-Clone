@@ -24,7 +24,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) 
     const [confirmOpen, setConfirmOpen] = useState(false);
 
     const { members } = useActiveList();
-    const isActive = members.indexOf(otherUser?.email!) !== -1;
+    const isActive = members.indexOf(otherUser?.email?? '') !== -1;
 
     const joinedDate = useMemo(() => {
         return format(new Date(otherUser.createdAt), 'PP');
