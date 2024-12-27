@@ -5,9 +5,7 @@ import useActiveChannel from "../hooks/useActiveChannel";
 const ActiveStatus = () => {
     useActiveChannel();
     
-    return (
-        <div>ActiveStatus</div>
-    )
+    return null;
 }
 
 export default ActiveStatus;
