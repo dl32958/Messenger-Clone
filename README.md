@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img src="https://th.bing.com/th/id/R.ce1b610b6ce7a92a69382007efb63b20?rik=JLsU1Wcqdv%2bGng&pid=ImgRaw&r=0" alt="logo" width="200" height="auto" />
+
+# Messenger Clone
+
+A real-time messaging application built to replicate the core features of popular chat platforms, offering seamless communication with modern design and robust functionality.
 
 ## Getting Started
 
